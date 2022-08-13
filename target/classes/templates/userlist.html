@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+</head>
+<body>
+    <h1>Danh sách người dùng</h1><br>
+    <a th:href="@{/user/add-user}">Add</a><br>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Avatar</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.phone}"></td>
+            <td><img width="40dp" height="50dp" th:src="${user.avatar}" alt=""></td>
+            <td>
+                <a th:href="@{/user/update-user/{id}(id=${user.id})}">Sửa</a>
+                <a th:href="@{/user/delete-user/{id}(id=${user.id})}">Xóa</a>
+<!--                        <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>-->
+<!--            <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>-->
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>
